@@ -21,5 +21,24 @@ document.addEventListener("DOMContentLoaded", () => {
   */
 
   const divs = document.getElementsByClassName("div");
-  console.log(divs.item(0));
+
+  // Select from list (Node)
+  const firstDiv = divs.item(0);
+
+  console.log(firstDiv[0])
+
+  // get parent HTML element
+  console.log( firstDiv.parentElement );
+
+  [].forEach.call(divs, (e) => {
+    e.style.color = "green";
+  });
+
+  // get children elements (HTML Collection)
+  const children = firstDiv.children;
+
+  console.log( firstDiv.firstChild );
+
+  // remove a child
+  firstDiv.removeChild(firstDiv.firstElementChild);
 });

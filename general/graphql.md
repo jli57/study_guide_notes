@@ -1,8 +1,10 @@
 # GraphQL
+[Source](https://www.howtographql.com/)
 
 * [Introduction](#introduction)
 * [Advantages of GraphQL](#advantages-of-graphql)
 * [Core Concepts](#core-concepts)
+* [Big Picture Architecture](#big-picture-architecture)
 
 ## Introduction
 * GraphQL is a new API stndard that provides a more efficient, powerful, and flexible alternative to REST.
@@ -208,3 +210,53 @@ type Subscription {
   newPerson: Person!
 }
 ```
+
+## Big Picture Architecture
+* GraphQL is only a _specification_ of how the GraphQL Servers hould be implemented:
+ * what kind of requests it should accept
+ * what the response format should look like
+* The GraphQL Server can be built in any programming language of your choice
+* [Graphcool](http://www.graph.cool/) proides a powerful GraphQL API out-of-box
+
+### Uses Cases
+1. GraphQL server with a connected database
+2. GraphQL server to integrate existing system
+3. A hybrid approach with a connected database and integration of existing system
+
+#### GraphQL server with a connected database
+* often used for _greenfield_ projects
+* uses a single web server that implements GraphQL
+* server resolves queries and constructs response with data that it fetches from the database
+* GraphQL is _tranport-layer agnostic_
+  * it can be used with any available network protocol (TCP, WebSockets, etc)
+  * the database or data storage format is irrelevant. Both SQL or NoSQL implementations are ok.
+
+#### GraphQL server to integrate existing system
+* compelling for companies with legacy infrastuctures and many different APIs
+* GraphQL can be used to unify existing systems and hide complexity of data fetching logic
+* the server doesn't care about the what the data sources jare (databases, web services, 3rd party APIs,...)
+
+#### A hybrid approach with a connected database and integration of existing system
+* The two aforementioned approaches can be combined to build a GraphQL server that has a connected database but still talks to legacy or third-party systems
+* When a query is received by the server, it will resolve it and either retrieve the required data from the connected database or some of the integrated APIs.
+
+### Resolver Functions
+* GraphQL queries/mutations consist of a set of fields
+* GraphQL server has one resolver function per field
+* the purpose of each resolver is to retrieve the data for its corresponding field
+
+### GraphQL Clients
+*good for frontend developers as data fetching complexity is pushed to the server side
+* client doesn't care where data is coming from
+
+#### From imperative to declarative data fetching
+
+Imperative:
+1. construct and send HTTP request (e.g. with `fetch` in JavaScript)
+2. receive and parse server response
+3. store data locally (either simply in memory or persistent)
+4. display data in the UI
+
+Declarative
+1. Describe data requirements
+2. Display information in the UI

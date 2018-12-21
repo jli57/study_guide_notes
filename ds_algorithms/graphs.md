@@ -1,5 +1,12 @@
 # Graphs
 
+˜- [Graphs](#graphs)
+    - [Terminology](#terminology)
+    - [Menger's Theorem](#mengers-theorem)
+    - [Graph Representation](#graph-representation)
+    - [Topological Sorting](#topological-sorting)
+    - [Concept Checks](#concept-checks)˜
+
 * Graphs have a set of **edges/links** and a set of **vertices/nodes**
 * Graphs are used to formally represent a network, or a collection of interconnected objects
 
@@ -79,3 +86,4 @@ Directed graphs are represented as an **adjacency list** where each vertex v sto
 Graphs can be represented as an **adjacency matrix**, a two-dimensional array where A<sub>ij</sub> is non-zero when there is an edge (v<sub>i</sub>, v<sub>j</sub>).
 
 Basic Graph Traversal: start from a node and find all edges accessible from the starting node. Mark nodes as visited and only find unvisited nodes to traverse. The set of vertices to explain can be maintained using a **Queue (BFS)** or a **stack (DFS)**.
+
